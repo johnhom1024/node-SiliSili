@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var mongo = require('./setting');
 
-
 //连接数据库
 mongoose.connect(mongo.url,{useNewUrlParser: true});
 
