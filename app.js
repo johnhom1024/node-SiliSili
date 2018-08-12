@@ -1,24 +1,38 @@
 // node 后端服务器
 
-const userApi = require('./api/userApi');
-const fs = require('fs');
-const path = require('path');
-const bodyParser = require('body-parser');
-const express = require('express');
+// const user = require('./router/user');
+// const admin = require('./router/admin');
+// const fs = require('fs');
+// const path = require('path');
+// const bodyParser = require('body-parser');
+// const express = require('express');
+import fs from 'fs';
+import path from 'path';
+import bodyParser from 'body-parser';
+import express from 'express';
+
+import user from './router/user';
+import admin from './router/admin';
+
 const app = express();
 
 //设置模版引擎
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-//设置session
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var mongo = require('./db/connect');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//设置session
+// var session = require('express-session');
+// var MongoStore = require('connect-mongo')(session);
+// var mongo = require('./db/connect');
+import session from 'express-session';
+import connectMongo from 'connect-mongo'
+
+const MongoStore = connectMongo(session);
+// 使用session
 app.use(session({
   secret:'12345',
   cookie: { maxAge:  1000 * 60  }, //设置cookied的生存周期为60s 
@@ -35,18 +49,13 @@ app.use(session({
 }));
 
 // 后端api路由
-app.use('/api/', userApi);
+app.use('/api', user);
+app.use('/', admin);
+
+//设置模版引擎
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 // catch 404 and forward to error handler
-
-
-//启动mongodb数据库
-
-
-mongo.connectToServer(function (err) {
-  if (err) throw err;  
-});
 
 
 
