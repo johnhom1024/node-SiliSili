@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title 二次元后台管理页面
+    link(rel="stylesheet", href="//cdnjs.loli.net/ajax/libs/mdui/0.4.1/css/mdui.min.css")
+    script(src="//cdnjs.loli.net/ajax/libs/mdui/0.4.1/js/mdui.min.js")
+    
+  body.mdui-theme-accent-pink.mdui-theme-primary-pink.mdui-drawer-body-left
+    //- div.header
+    //-   div.mdui-toolbar.mdui-color-theme-accent
+    //-       div.mdui-toolbar-spacer
+    //-       button.mdui-btn.mdui-btn-icon
+    //-         i.mdui-icon.material-icons menu
+    div.sidebar
+      div.mdui-drawer.mdui-drawer-open.mdui-color-blue-accent#left-drawer
+        ul.mdui-list(mdui-collapse="{accordion: true}")
+          li.mdui-collapse-item
+            div.mdui-collapse-item-header.mdui-list-item.mdui-ripple
+              i.mdui-list-item-icon.mdui-icon.material-icons person
+              div.mdui-list-item-content 用户
+              i.mdui-collapse-item-arrow.mdui-icon.material-icons   keyboard_arrow_down
+            ul.mdui-collapse-item-body.mdui-list.mdui-list-dense
+              li.mdui-list-item.mdui-ripple 所有用户
+    block content
