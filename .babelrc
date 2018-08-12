@@ -1,2 +1,11 @@
-node_modules
-.DS_Store
+{
+  "presets": [
+    ["@babel/env",{
+        "targets":{
+          "node":"current"
+        }
+      }
+    ]
+  ],
+  "plugins": []
+}
