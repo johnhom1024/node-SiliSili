@@ -1,16 +1,10 @@
 // node 后端服务器
 
-// const user = require('./router/user');
-// const admin = require('./router/admin');
-// const fs = require('fs');
-// const path = require('path');
-// const bodyParser = require('body-parser');
-// const express = require('express');
 import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
 import express from 'express';
-
+import db from './db/db';
 import user from './router/user';
 import admin from './router/admin';
 
